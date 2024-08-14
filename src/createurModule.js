@@ -5,16 +5,14 @@ async function createCreateur(createur) {
   const db = await connect();
   const createurs = db.collection('createurs');
   
-  // Vérifier si l'id existe déjà
-  const existingCreateur = await createurs.findOne({ id: createur.id });
+  const existingCreateur = await createurs.findOne({ _id: createur._id });
   
   if (existingCreateur) {
-    console.log(`Une createur avec l'id ${createur.id} existe déjà. Aucune createur n'a été créée.`);
-    return null;  // ou renvoyer un message ou une valeur spécifique si nécessaire
+    console.log(`Une createur avec l'id ${createur._id} existe déjà. Aucune createur n'a été créée.`);
+    return null;  
   } else {
-    // Créer la nouvelle réponse si l'id n'existe pas
     const result = await createurs.insertOne(createur);
-    console.log(`Createur créée avec l'id ${createur.id}.`);
+    console.log(`Createur créée avec l'id ${createur._id}.`);
     return result.insertedId;
   }
 }
@@ -23,17 +21,17 @@ async function getCreateur() {
   const createurs = db.collection('createurs');
   return await createurs.find({}).toArray();
 }
-async function updateCreateur(id, update) {
+async function updateCreateur(_id, update) {
   const db = await connect();
   const createurs = db.collection('createurs');
-  const result = await createurs.updateOne({ id }, { $set: update });
+  const result = await createurs.updateOne({ _id }, { $set: update });
   return result.modifiedCount;
 }
 
-async function deleteCreateur(id) {
+async function deleteCreateur(_id) {
   const db = await connect();
   const createurs = db.collection('createurs');
-  const result = await createurs.deleteOne({ id });
+  const result = await createurs.deleteOne({ _id });
   return result.deletedCount;
 }
 

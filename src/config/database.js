@@ -6,14 +6,17 @@ const dbName = 'enqueteDB';
 let db;
 
 async function connect() {
-  if (db) return db;
-  
-  const client = new MongoClient(url);
-  await client.connect();
-  console.log('Connected to MongoDB');
-  
-  db = client.db(dbName);
-  return db;
+ try {
+    if (db) return db;
+    
+    const client = new MongoClient(url);
+    await client.connect();
+    console.log('Connected to MongoDB');
+    
+    db = client.db(dbName);
+    return db;
+ } catch (error) {
+  console.error('Not connected to MongoDB');
+ }
 }
-
 module.exports = { connect };

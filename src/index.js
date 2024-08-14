@@ -9,8 +9,8 @@ async function testCrud() {
 //   const createurId = await createCreateur({ id: 17, nomEmploye: 'Ousmane Ly', roleEmploye :"charger de communication general" });
 //   console.log('Createur Created:', createurId);
   
-//   const createur = await getCreateur();
-//   console.log('Createur Found:', createur);
+  const createur = await getCreateur();
+  console.log('Createur Found:', createur);
   
 //   await updateCreateur(17, { nomEmploye: 'aichetBBBBou Taher', roleEmploye :"charger de communication" });
 //   console.log('Createur Updated');

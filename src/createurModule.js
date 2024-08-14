@@ -1,24 +1,5 @@
-/**
- * De fichier est un exemple de module JS qui pourrqit une logique
- */
 const { connect } = require('./config/database');
 
-// async function dropUniqueIndex() {
-//   const db = await connect();
-//   const createurs = db.collection('createurs');
-//   await createurs.dropIndex('id_1');  // 'id_1' est le nom de l'index créé précédemment
-//   console.log('Index unique sur le champ "id" supprimé.');
-// }
-
-// dropUniqueIndex().catch(console.error);
-
-
-// async function createCreateur(createur) {
-//   const db = await connect();
-//   const createurs = db.collection('createurs');
-//   const result = await createurs.insertOne(createur);
-//   return result.insertedId;
-// }
 
 async function createCreateur(createur) {
   const db = await connect();
@@ -37,7 +18,7 @@ async function createCreateur(createur) {
     return result.insertedId;
   }
 }
-async function getCreateur(id) {
+async function getCreateur() {
   const db = await connect();
   const createurs = db.collection('createurs');
   return await createurs.find({}).toArray();

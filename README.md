@@ -51,6 +51,7 @@ npm start
 
  - Fonction : async createEmploye(employe)
     Cette fonction ajoute un nouveau employé à la collection employes. Avant de créer un nouveau employé, elle vérifie si un employé avec le même ID existe déjà dans la base de données.
+    `<br\>`
     Paramètres :
       `employe` (Objet) : L'objet représentant l'employé à créer.
 
@@ -59,12 +60,14 @@ npm start
 
  - Fonction : async updateEmploye(id, update)
     Cette fonction met à jour les informations d'un employé existant dans la collection employes en se basant suur ID entrer.
+    `<br\>`
     Paramètres :
       `id` (Number) : L'ID de l'employé à mettre à jour.
       `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
 
  - Fonction : async deleteEmploye(id)
     Cette fonction supprime un employé de la collection employs par son ID.
+    `<br\>`
     Paramètres :
       `id` (Number) : L'ID d'employé à supprimer.
 

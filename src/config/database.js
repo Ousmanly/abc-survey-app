@@ -1,7 +1,8 @@
 const { MongoClient } = require('mongodb');
 
 const url = 'mongodb://localhost:27017';
-const dbName = 'enqueteDB';
+// const dbName = 'enqueteDB';
+const dbName = 'fiche_enquete';
 
 let db;
 
@@ -19,4 +20,5 @@ async function connect() {
   console.error('Not connected to MongoDB');
  }
 }
+
 module.exports = { connect };

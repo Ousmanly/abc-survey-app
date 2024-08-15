@@ -1,64 +1,64 @@
-const { createCreateur, getCreateur, updateCreateur, deleteCreateur } = require('./createurModule');
+const { createEmploye, getEmploye, updateEmploye, deleteEmploye } = require('./employeModule');
 const { createQuestion, getQuestion, updateQuestion, deleteQuestion } = require('./questionModule');
 const { createReponse, getReponse, updateReponse, deleteReponse } = require('./reponseModule');
-const { createEnquete, getEnquete, updateEnquete, deleteEnquete } = require('./enqueteModule');
+const { createFichier, getFichier, updateFichier, deleteFichier } = require('./fichierModule');
 
 async function testCrud() {
   // Test CRUD pour Createur
   
-  const createurId = await createCreateur({ _id: 1, nomEmploye: 'Ousmane Ly', roleEmploye :"charger de communication general" });
-  console.log('Createur Created:', createurId);
+  // const employeId = await createEmploye({ id: 1, nomEmploye: 'Ousmane Ly', roleEmploye :"charger de communication general" });
+  // console.log('Employe Created:', employeId);
   
-  const createur = await getCreateur();
-  console.log('Createur Found:', createur);
+  // const employe = await getEmploye();
+  // console.log('Employe Found:', employe);
   
-  await updateCreateur(18, { nomEmploye: 'aichetou Taher', roleEmploye :"charger de communication" });
-  console.log('Createur Updated');
+  // await updateEmploye(3, { nomEmploye: 'aichetou Taher', roleEmploye :"charger de communication" });
+  // console.log('Employe Updated');
 
-  await deleteCreateur(19);
-  console.log('Createur Deleted');
-  
+  // await deleteEmploye(3);
+  // console.log('Employe Deleted');
+
   // Test CRUD pour Question
 
-  const questionId = await createQuestion({ _id: 1, enqueteId: 1, titre: 'Comment évalueriez-vous notre service ?', type: 'choix_multiple', options: ['Excellent', 'Bon', 'Moyen', 'Mauvais'] });
-  console.log('Question Created:', questionId);
+  // const questionId = await createQuestion({ id: 2, enqueteId: 1, titre: 'Comment évalueriez-vous notre service ?', type: 'choix_multiple', options: ['Excellent', 'Bon', 'Moyen', 'Mauvais'] });
+  // console.log('Question Created:', questionId);
   
-  const question = await getQuestion();
-  console.log('Question Found:', question);
+  // const question = await getQuestion();
+  // console.log('Question Found:', question);
   
-  await updateQuestion(3, { enqueteId: 32, titre: 'Comment évalueriez-vous notre service ?', type: 'choix_multiple', options: ['Excellent', 'Bon', 'Moyen', 'Mauvais'] } );
-  console.log('Question Updated');
+  // await updateQuestion(2, { enqueteId: 32, titre: 'Comment évalueriez-vous notre service ?', type: 'choix_multiple', options: ['Excellent', 'Bon', 'Moyen', 'Mauvais'] } );
+  // console.log('Question Updated');
   
-  await deleteQuestion(3);
-  console.log('Question Deleted');
+  // await deleteQuestion(2);
+  // console.log('Question Deleted');
 
-  // Test CRUD pour Reponse
+  // // Test CRUD pour Reponse
   
-  const reponseId = await createReponse({ _id: 1, questionId: 3, titre: 'Bon' });
-  console.log('Reponse Created:', reponseId);
+  // const reponseId = await createReponse({ id: 2, questionId: 3, titre: 'Bon' });
+  // console.log('Reponse Created:', reponseId);
   
-  const reponse = await getReponse();
-  console.log('Reponse Found:', reponse);
+  // const reponse = await getReponse();
+  // console.log('Reponse Found:', reponse);
   
-  await updateReponse(2, { questionId: 4, titre: 'Très Bon' });
-  console.log('Reponse Updated');
+  // await updateReponse(2, { questionId: 4, titre: 'Très Bon' });
+  // console.log('Reponse Updated');
 
-  await deleteReponse(2);
-  console.log('Reponse Deleted');
+  // await deleteReponse(2);
+  // console.log('Reponse Deleted');
 
-  // Test CRUD pour Enquete
+  // // Test CRUD pour Enquete
 
-  const enqueteId = await createEnquete({ _id:1, name: 'Satisfaction Client', description: 'This is a new fichier', date: '2025-08-25T08:00:00Z', createurId: 1, questionIds: [1], reponseIds: [1] });
-  console.log('Enquete Created:', enqueteId);
+  // const fichierId = await createFichier({ id:2, name: 'Satisfaction Client', description: 'This is a new fichier', date: '2025-08-25T08:00:00Z', employeId: 1, questionIds: [1], reponseIds: [1] });
+  // console.log('Fichier Created:', fichierId);
 
-  const enquetes = await getEnquete();
-  console.log('Enquetes Found:', enquetes);
+  // const fichiers = await getFichier();
+  // console.log('Fichier Found:', fichiers);
   
-  await updateEnquete(2, { name: 'Satisfaction Client', description: 'This is a new fichier', date: '2025-08-25T08:00:00Z', createurId: 4, questionIds: [1], reponseIds: [1] });
-  console.log('Enquete Updated');
+  // await updateFichier(2, { name: 'Satisfaction Client Amadou', description: 'This is a new fichier', date: '2025-08-25T08:00:00Z', createurId: 4, questionIds: [1], reponseIds: [1] });
+  // console.log('Fichier Updated');
 
-  await deleteEnquete(2);
-  console.log('Enquete Deleted');
+  // await deleteFichier(2);
+  // console.log('Fichier Deleted');
 }
 
 testCrud().catch(console.error);

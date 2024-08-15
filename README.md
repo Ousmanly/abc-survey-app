@@ -52,7 +52,7 @@ npm start
  - Fonction : async createEmploye(employe)
     Cette fonction ajoute un nouveau employé à la collection employes. Avant de créer un nouveau employé, elle vérifie si un employé avec le même ID existe déjà dans la bas de données.
     - Paramètres :
-      `employe` (Objet) : L'objet représentant l'employé à créer.
+      - `employe` (Objet) : L'objet représentant l'employé à créer.
 
  - Fonction : async getEmploye()
     Cette fonction récupère tous les employés présents dans la collection employes de la base de données.
@@ -60,20 +60,20 @@ npm start
  - Fonction : async updateEmploye(id, update)
     Cette fonction met à jour les informations d'un employé existant dans la collection employes en se basant suur ID entrer.
     - Paramètres :
-      `id` (Number) : L'ID de l'employé à mettre à jour.
-      `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
+      - `id` (Number) : L'ID de l'employé à mettre à jour.
+      - `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
 
  - Fonction : async deleteEmploye(id)
     Cette fonction supprime un employé de la collection employs par son ID.
     - Paramètres :
-      `id` (Number) : L'ID d'employé à supprimer.
+      - `id` (Number) : L'ID d'employé à supprimer.
 
 2. **fichierModule :**
  
  - Fonction : async createFichier(fichier)
     Cette fonction ajoute une nouvelle fichier à la collection fichiers. Avant de créer un nouveau fichier, elle vérifie si une fichier avec le même ID existe déjà dans la base de données.
     - Paramètres :
-      `fichier` (Objet) : L'objet représentant le fichier à créer. 
+      - `fichier` (Objet) : L'objet représentant le fichier à créer. 
  
  - Fonction : async getFichier()
     Cette fonction récupère toutes les fichiers présentes dans la collection fichiers de la base de données. Elle renvoie la liste complète des fichiers.
@@ -81,20 +81,20 @@ npm start
  - Fonction : async updateFichier(id, update)
     Cette fonction met à jour les informations d'un fichier existant dans la collection fichiers en se basant suur ID entrer.
     - Paramètres :
-      `id` (Number) : L'ID du fichier à mettre à jour.
-      `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
+      - `id` (Number) : L'ID du fichier à mettre à jour.
+      - `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
 
  - Fonction : async deleteFichier(id)
     Cette fonction supprime un fichier de la collection fichiers par son ID.
     - Paramètres :
-      `id` (Number) : L'ID du fichier à supprimer.
+      - `id` (Number) : L'ID du fichier à supprimer.
 
 3. **reponseModule :**
 
  - Fonction : async createReponse(reponse)
     Cette fonction ajoute une nouvelle réponse à la collection reponses. Avant de créer une nouvelle réponse, elle vérifie si une réponse avec le même ID existe déjà dans la base de données.
     - Paramètres :
-      `reponse` (Objet) : L'objet représentant la réponse à créer.
+      - `reponse` (Objet) : L'objet représentant la réponse à créer.
  
  - Fonction : async getReponse()
     Cette fonction récupère toutes les réponses présentes dans la collection reponses de la base de données. Elle renvoie la liste complète des réponses.
@@ -102,19 +102,19 @@ npm start
  - Fonction : async updateReponse(id, update)
     Cette fonction met à jour les informations d'une réponse existante dans la collection reponses en se basant suur ID entrer.
     - Paramètres :
-      `id` (Number) : L'ID de la réponse à mettre à jour.
-      `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
+      - `id` (Number) : L'ID de la réponse à mettre à jour.
+      - `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
 
  - Fonction : async deleteReponse(id)
     Cette fonction supprime une réponse de la collection reponses par son ID.
     - Paramètres :
-      `id` (Number) : L'ID de la réponse à supprimer.
+      - `id` (Number) : L'ID de la réponse à supprimer.
 
 3. **questionModule :**
  - Fonction : async createQuestion(question)
     Cette fonction ajoute une nouvelle question à la collection question. Avant de créer une nouvelle question, elle vérifie si une question avec le même ID existe déjà dans la base de données.
     - Paramètres :
-      `question` (Objet) : L'objet représentant la question à créer.
+      - `question` (Objet) : L'objet représentant la question à créer.
 
  - Fonction : async getQuestion()
     Cette fonction récupère toutes les questions présentes dans la collection questions de la base de données. Elle renvoie la liste complète des questions.
@@ -122,13 +122,13 @@ npm start
  - Fonction : async updateQuestion(id, update)
     Cette fonction met à jour les informations d'une question existante dans la collection questions en se basant suur ID entrer.
     - Paramètres :
-      `id` (Number) : L'ID de la question à mettre à jour.
-      `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
+      - `id` (Number) : L'ID de la question à mettre à jour.
+      - `update` (Objet) : Un objet contenant les champs à mettre à jour et leurs nouvelles valeurs.
 
  - Fonction : async deleteQuestion(id)
     Cette fonction supprime une question de la collection questions par son ID.
     - Paramètres :
-      `id` (Number) : L'ID de la question à supprimer.
+      - `id` (Number) : L'ID de la question à supprimer.
 
 ## Authors
  - Nom : Ousmane Ibrahima Ly

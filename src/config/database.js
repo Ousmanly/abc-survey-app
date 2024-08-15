@@ -1,7 +1,6 @@
 const { MongoClient } = require('mongodb');
 
 const url = 'mongodb://localhost:27017';
-// const dbName = 'enqueteDB';
 const dbName = 'fiche_enquete';
 
 let db;

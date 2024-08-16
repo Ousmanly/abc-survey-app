@@ -23,17 +23,35 @@ async function getFichier() {
 }
 
 async function updateFichier(id, update) {
-  const db = await connect();
-  const fichiers = db.collection('fichiers');
-  const result = await fichiers.updateOne({ id }, { $set: update });
-  return result.modifiedCount;
+  try {
+    const db = await connect();
+    const fichiers = db.collection('fichiers');
+    const result = await fichiers.updateOne({ id }, { $set: update });
+  
+    const checkFichierUpdate = await fichiers.findOne({ id: id });
+    if (!checkFichierUpdate) {
+      throw new Error('Aucun fichier trouvée');
+    }
+    console.log(`Le fichier de l'identifiant ${id} a été modifier avec succés`)
+    return result.modifiedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 async function deleteFichier(id) {
-  const db = await connect();
-  const fichiers = db.collection('fichiers');
-  const result = await fichiers.deleteOne({ id });
-  return result.deletedCount;
+  try {
+    const db = await connect();
+    const fichiers = db.collection('fichiers');
+    const result = await fichiers.deleteOne({ id });
+   if (result.deletedCount === 0) {
+      throw new Error('Aucun fichier trouvée.');
+    }
+    console.log(`Le fichier de l'identifiant ${id} a été supprimé avec succés`)
+    return result.deletedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 module.exports = { createFichier, getFichier, updateFichier, deleteFichier };

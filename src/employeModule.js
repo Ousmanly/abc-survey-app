@@ -21,18 +21,37 @@ async function getEmploye() {
   const employes = db.collection('employes');
   return await employes.find({}).toArray();
 }
+
 async function updateEmploye(id, update) {
-  const db = await connect();
-  const employes = db.collection('employes');
-  const result = await employes.updateOne({ id }, { $set: update });
-  return result.modifiedCount;
+  try {
+    const db = await connect();
+    const employes = db.collection('employes');
+    const result = await employes.updateOne({ id }, { $set: update });
+  
+    const checkEmployeUpdate = await employes.findOne({ id: id });
+    if (!checkEmployeUpdate) {
+      throw new Error('Aucun employe trouvée');
+    }
+    console.log(`L'employe de l'identifiant ${id} a été modifier avec succés`)
+    return result.modifiedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 async function deleteEmploye(id) {
-  const db = await connect();
-  const employes = db.collection('employes');
-  const result = await employes.deleteOne({ id });
-  return result.deletedCount;
+  try {
+    const db = await connect();
+    const employes = db.collection('employes');
+    const result = await employes.deleteOne({ id });
+   if (result.deletedCount === 0) {
+      throw new Error('Aucune employe trouvée.');
+    }
+    console.log(`L'employe de l'identifiant ${id} a été supprimé avec succés`)
+    return result.deletedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 module.exports = { createEmploye, getEmploye, updateEmploye, deleteEmploye };

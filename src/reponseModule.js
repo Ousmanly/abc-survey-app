@@ -23,19 +23,37 @@ async function getReponse() {
   const reponses = db.collection('reponses');
   return await reponses.find({}).toArray();
 }
-
 async function updateReponse(id, update) {
-  const db = await connect();
-  const reponses = db.collection('reponses');
-  const result = await reponses.updateOne({ id }, { $set: update });
-  return result.modifiedCount;
+  try {
+    const db = await connect();
+    const reponses = db.collection('reponses');
+    const result = await reponses.updateOne({ id }, { $set: update });
+  
+    const checkReponseUpdate = await reponses.findOne({ id: id });
+    if (!checkReponseUpdate) {
+      throw new Error('Aucune réponse trouvée');
+    }
+    console.log(`La reponse de l'identifiant ${id} a été modifier avec succés`)
+    return result.modifiedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
+
 async function deleteReponse(id) {
-  const db = await connect();
-  const reponses = db.collection('reponses');
-  const result = await reponses.deleteOne({ id });
-  return result.deletedCount;
+  try {
+    const db = await connect();
+    const reponses = db.collection('reponses');
+    const result = await reponses.deleteOne({ id });
+   if (result.deletedCount === 0) {
+      throw new Error('Aucune réponse trouvée.');
+    }
+    console.log(`La reponse de l'identifiant ${id} a été supprimé avec succés`)
+    return result.deletedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 module.exports = { createReponse, getReponse, updateReponse, deleteReponse };

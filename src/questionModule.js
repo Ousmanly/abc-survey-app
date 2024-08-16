@@ -22,18 +22,38 @@ async function getQuestion() {
   const questions = db.collection('questions');
   return await questions.find({}).toArray();
 }
+
 async function updateQuestion(id, update) {
-  const db = await connect();
-  const questions = db.collection('questions');
-  const result = await questions.updateOne({ id }, { $set: update });
-  return result.modifiedCount;
+  try {
+    const db = await connect();
+    const questions = db.collection('questions');
+    const result = await questions.updateOne({ id }, { $set: update });
+  
+    const checkQuestionUpdate = await questions.findOne({ id: id });
+    if (!checkQuestionUpdate) {
+      throw new Error('Aucune réponse trouvée');
+    }
+    console.log(`La question de l'identifiant ${id} a été modifier avec succés`)
+    return result.modifiedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 async function deleteQuestion(id) {
-  const db = await connect();
-  const questions = db.collection('questions');
-  const result = await questions.deleteOne({ id });
-  return result.deletedCount;
+  try {
+    const db = await connect();
+    const questions = db.collection('questions');
+    const result = await questions.deleteOne({ id });
+    
+   if (result.deletedCount === 0) {
+      throw new Error('Aucune question trouvée.');
+    }
+    console.log(`La question de l'identifiant ${id} a été supprimé avec succés`)
+    return result.deletedCount;
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 module.exports = { createQuestion, getQuestion, updateQuestion, deleteQuestion };

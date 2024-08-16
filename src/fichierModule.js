@@ -17,11 +17,20 @@ async function createFichier(fichier) {
 }
 
 async function getFichier() {
-  const db = await connect();
-  const fichiers = db.collection('fichiers');
-  return await fichiers.find({}).toArray(); 
+  try {
+    const db = await connect();
+    const fichiers = db.collection('fichiers');
+    const result = await fichiers.find({}).toArray();
+    if (result.length === 0) {
+      throw new Error('Aucun fichier trouvée');
+    }
+    console.log("Les fichiers trouvé :",result)
+  
+  } catch (error) {
+    console.error(error.message);
+  }
+ 
 }
-
 async function updateFichier(id, update) {
   try {
     const db = await connect();

@@ -19,22 +19,32 @@ async function createReponse(reponse) {
 
 
 async function getReponse() {
-  const db = await connect();
-  const reponses = db.collection('reponses');
-  return await reponses.find({}).toArray();
+  try {
+    const db = await connect();
+    const reponses = db.collection('reponses');
+    const result = await reponses.find({}).toArray();
+    if (result.length === 0) {
+      throw new Error('Aucune réponse trouvée');
+    }
+    console.log("Les reponses trouvé :",result)
+  
+  } catch (error) {
+    console.error(error.message);
+  }
+ 
 }
+
 async function updateReponse(id, update) {
   try {
     const db = await connect();
     const reponses = db.collection('reponses');
-    const result = await reponses.updateOne({ id }, { $set: update });
+    await reponses.updateOne({ id }, { $set: update });
   
     const checkReponseUpdate = await reponses.findOne({ id: id });
     if (!checkReponseUpdate) {
       throw new Error('Aucune réponse trouvée');
     }
     console.log(`La reponse de l'identifiant ${id} a été modifier avec succés`)
-    return result.modifiedCount;
   } catch (error) {
     console.error(error.message)
   }
@@ -50,7 +60,6 @@ async function deleteReponse(id) {
       throw new Error('Aucune réponse trouvée.');
     }
     console.log(`La reponse de l'identifiant ${id} a été supprimé avec succés`)
-    return result.deletedCount;
   } catch (error) {
     console.error(error.message)
   }

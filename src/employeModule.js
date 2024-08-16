@@ -16,10 +16,21 @@ async function createEmploye(employe) {
     return result.insertedId;
   }
 }
+
 async function getEmploye() {
-  const db = await connect();
-  const employes = db.collection('employes');
-  return await employes.find({}).toArray();
+  try {
+    const db = await connect();
+    const employes = db.collection('employes');
+    const result = await employes.find({}).toArray();
+    if (result.length === 0) {
+      throw new Error('Aucun employé trouvé');
+    }
+    console.log("Les employés trouvé :",result)
+  
+  } catch (error) {
+    console.error(error.message);
+  }
+ 
 }
 
 async function updateEmploye(id, update) {
@@ -45,7 +56,7 @@ async function deleteEmploye(id) {
     const employes = db.collection('employes');
     const result = await employes.deleteOne({ id });
    if (result.deletedCount === 0) {
-      throw new Error('Aucune employe trouvée.');
+      throw new Error('Aucun employe trouvée.');
     }
     console.log(`L'employe de l'identifiant ${id} a été supprimé avec succés`)
     return result.deletedCount;

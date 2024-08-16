@@ -18,9 +18,19 @@ async function createQuestion(question) {
 }
 
 async function getQuestion() {
-  const db = await connect();
-  const questions = db.collection('questions');
-  return await questions.find({}).toArray();
+  try {
+    const db = await connect();
+    const questions = db.collection('questions');
+    const result = await questions.find({}).toArray();
+    if (result.length === 0) {
+      throw new Error('Aucune question trouvé');
+    }
+    console.log("Les questions trouvé :",result)
+  
+  } catch (error) {
+    console.error(error.message);
+  }
+ 
 }
 
 async function updateQuestion(id, update) {
